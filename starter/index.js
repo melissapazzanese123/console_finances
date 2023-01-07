@@ -87,7 +87,62 @@ let finances = [
 ['Feb-2017', 671099]
 ];
 
-console.log(finances.length)
+
+// calculate the difference between one month and the previous month (difference)
+
+// check all diffs for the largest (max)
+//- which month does the max beling to? (maxMonth)
+// check all diff for the smallest (min)
+//- which month does the min belong to? (minMonth)
+//Put all these things together in one console output (output)
 
 
-console.log("Financial Analysis")
+// count how many months are in the the date set (months)
+
+let Months = finances.length;
+
+let Total = 0;
+let diff = finances[0][1];
+let TotalDiff = 0;
+let max = finances [0];
+let min = finances [0];
+let maxMonth = max[1];
+let minMonth = min[1];
+for (let row = 0; row < finances.length; row++) {
+    // calculate total of all monthly profits (total) 
+    Total = Total + finances[row][1]
+    // calculate the difference between one month and the previous month (difference)
+    diff = finances[row] [1] - diff;
+    // calculate the total of the diferences (totalDif)
+    TotalDiff = TotalDiff + diff
+    
+    // check all diffs for the largest (max)
+    if (maxMonth < diff) {
+    max = finances[row];
+    maxMonth = diff;
+    }
+
+    if (minMonth > diff) {
+        min = finances[row];
+        minMonth = diff;
+        }
+    // Set the current month profit to (diff) so it can be used in the next loop for previous month 
+    diff = finances[row][1]; 
+}   
+
+// Divide totalDif by the month -1 (coz we dont count the first) ... (average)
+const Average = (TotalDiff / (Months - 1)).toFixed(2);
+
+
+//Put all these things together in one console output (output)
+
+const output = `
+    Financial Analysis
+    Number of months ${Months}
+    Total: $${Total}
+    Average difference in profits; $${Average}
+    Greatest increase in profits: ${max[0]} ($${maxMonth})
+    Greatest increase in profits: ${min[0]} ($${minMonth})`
+
+
+console.log(output);
