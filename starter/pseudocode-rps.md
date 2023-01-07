@@ -17,14 +17,6 @@ The greatest increase in profits (date and amount) over the entire period.
 
 The greatest decrease in losses (date and amount) over the entire period.
 
-Ideas: 
-
-totalMonth
-lastMonthFinances = a
-currentMonthFinance = b
-changes = a - b
-
-
 
 // count how many months are in the the date set (months)
 // calculate total of all monthly profits (total) 
